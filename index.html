@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Dentro de <head> -->
+<style>
+  .perfil-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .perfil-imagen {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--soft-bark);
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  }
+  .perfil-titulo {
+    font-family: 'UnifrakturCook', serif;
+    font-size: clamp(2rem,5vw,3.5rem);
+    color: var(--withered-wine);
+    text-shadow: 0 0 5px var(--matrix-green);
+  }
+</style>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Extravagant Ancient Book</title>
+
+<!-- Selected Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Beckett&family=Sacramento&family=UnifrakturCook&family=Garamond&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    /* Color Palette */
+    --withered-wine: #ae5b77;
+    --dead-lavender: #817890;
+    --withered-gold: #c2965e;
+    --soft-bark: #8b7266;
+    --dusty-bronze: #5e4b49;
+    --blood-ink: #502b2b;
+    --poisoned-plum: #74546e;
+    --background: #f1e5d0;
+    --matrix-green: #00ff44;
+  }
+
+  /* Basic Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    background: var(--background);
+      background-image: url("background.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: var(--background);
+    margin: 0;
+    padding: 2vh 5vw;
+    font-family: 'Garamond', serif;
+    color: var(--blood-ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Main Container */
+  #parchment {
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem 3rem;
+    background: var(--background);
+    box-shadow:
+      2px 3px 20px rgba(0,0,0,0.6),
+      inset 0 0 120px var(--dusty-bronze);
+    border-radius: 12px;
+    position: relative;
+    filter: none; /* If you want a filter, try here with less intensity */
+  }
+
+  /* Window-style Cover */
+  .ventana-98 {
+    background: var(--background);
+    border: 4px solid var(--soft-bark);
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.4);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+  }
+
+  .barra {
+    background: var(--dusty-bronze);
+    padding: 6px 10px;
+    display: flex;
+    gap: 0.5rem;
+    border-radius: 4px 4px 0 0;
+    user-select: none;
+  }
+  .barra .btn {
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    color: var(--background);
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.3rem;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+  }
+  .barra .btn:hover {
+    background: rgba(0,0,0,0.4);
+  }
+
+  /* Main Title */
+  .titulo {
+    font-family: 'UnifrakturCook', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--withered-wine);
+    text-decoration: underline var(--soft-bark);
+    text-transform: uppercase;
+    margin: 1rem 0 0.4rem 0;
+    line-height: 1.1;
+    text-shadow:
+      0 0 5px var(--matrix-green),
+      0 0 10px var(--matrix-green);
+  }
+
+  /* Subtitle */
+  .subtitulo {
+    font-family: 'Beckett', cursive;
+    font-size: clamp(1.3rem, 3vw, 2.2rem);
+    font-style: italic;
+    color: var(--dead-lavender);
+    margin-bottom: 1.5rem;
+  }
+
+  /* Body Content */
+  .cuerpo {
+    font-family: 'Garamond', serif;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: var(--blood-ink);
+    line-height: 1.7;
+  }
+  .cuerpo h2 {
+    font-family: 'Sacramento', cursive;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-top: 2rem;
+    color: var(--poisoned-plum);
+    border-bottom: 2px solid var(--soft-bark);
+    padding-bottom: 0.2rem;
+  }
+  .cuerpo p, .cuerpo ul {
+    margin-top: 1rem;
+  }
+  .cuerpo em {
+    font-style: italic;
+  }
+  .cuerpo a {
+    color: var(--withered-gold);
+    text-decoration: underline;
+  }
+  .cuerpo a:hover {
+    color: var(--withered-wine);
+  }
+
+  /* Drop Cap */
+  .cuerpo p::first-letter {
+    font-size: 2.5rem;
+    color: var(--withered-gold);
+    float: left;
+    margin-right: 8px;
+    line-height: 1;
+    font-weight: bold;
+  }
+
+  /* Mobile Adaptability */
+  @media (max-width: 600px) {
+    body {
+      padding: 1rem 1rem;
+    }
+    #parchment {
+      padding: 1rem 1.5rem;
+    }
+    .barra .btn {
+      width: 20px;
+      height: 20px;
+      font-size: 1.1rem;
+      line-height: 20px;
+    }
+  }
+</style>
+
+</head>
+<body>
+
+<div id="parchment" class="pagina">
+  <div class="ventana ventana-98" role="main" aria-label="Meet Srto. Rainwood">
+    <div class="barra" aria-label="Window control bar">
+      <span class="btn cerrar" role="button" aria-label="Close window">×</span>
+      <span class="btn minimizar" role="button" aria-label="Minimize window">–</span>
+    </div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 2rem; margin-bottom: 2rem;">
+
+  <!-- Polaroid -->
+  <div style="position: relative; background: #fff; border-radius: 16px; padding: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); width: 180px; text-align: center;">
+    <img src="livano.png" width="150" height="150" alt="Descripción" style="border-radius: 12px; display: block; margin: 0 auto;" />
+    <div style="margin-top: 0.5rem; font-size: 0.85rem; color: #555;">☁ Livano ☁</div>
+
+    <!-- Cinta decorativa -->
+    <div style="position: absolute; top: -10px; left: 40px; width: 100px; height: 20px; background: #d5b59c; transform: rotate(-5deg); opacity: 0.8; z-index: 1; border-radius: 4px;"></div>
+  </div>
+
+  <!-- Título -->
+  <div>
+    <h1 class="titulo" style="text-align: center;">❦ Meet Srto. Rainwood ❦</h1>
+    <h2 class="subtitulo" style="text-align: center;">"We are ruins breathing beauty: we give everything, even if fate returns us nothing." 🌙</h2>
+  </div>
+
+</div>
+
+    <section class="cuerpo">
+      <h2>Pronouns</h2>
+      <p>He / It</p>
+
+      <h2>Names</h2>
+      <p>Bruno / Hector</p>
+
+      <h2>Nickname</h2>
+      <p>Rain (like the rain that silently writes over every wound)</p>
+
+      <h2>Age</h2>
+      <p>18 years old</p>
+
+      <h2>Nationality</h2>
+      <p>Argentina (Capital of Corrientes)</p>
+
+      <h2>Sign</h2>
+      <p>Capricorn / Dog (Chinese zodiac)</p>
+
+      <h2>Height</h2>
+      <p>1.75 m</p>
+
+      <h2>Birthday</h2>
+      <p>January 16, 2007</p>
+
+      <h2>Languages</h2>
+      <p>Spanish and some English</p>
+
+      <h2>Religion</h2>
+      <p>Non-practicing Christian</p>
+      
+      <h2>Status</h2>
+      <p>Single</p>
+
+      <h2>Orientation</h2>
+      <p>Pansexual (Versatile mostly dominant) </p>
+
+      <h2>Looking For</h2>
+      <p>A partner or deep friendship, someone silly, emotional, funny, sweet with words, who wants to laugh, philosophize, play, and cry with me.</p>
+
+      <hr />
+
+      <h2>Personality and Essence</h2>
+      <p>I am a nostalgic soul disguised as a romantic fool. Sometimes silly, sometimes wise. I glide between melancholy and mischief as easily as someone changes a song.</p>
+      <p>I like to talk a lot, as if every word were a thread with which I try to sew the souls of others. I can be bold, poetic, emotional, flattering without reason, and full of affection. I quickly grow fond and find it hard to stop caring.</p>
+
+      <hr />
+
+      <h2>Likes</h2>
+      <p><strong>Music I listen to and compose:</strong> R&amp;B, J-Pop, Vocaloid, Breakcore, Argentine/Classic, indie Rock, Thrash Metal, Gangsta Rap, Trap, Jazz, and anything that sounds honest or weird.</p>
+
+      <p><strong>Favorite songs:</strong></p>
+      <ul>
+        <li>Mucho mejor – Los Rodríguez</li>
+        <li>Teknopathetic (80s remix) – Hideki Naganuma</li>
+        <li>Don't Trust 'Em – Ice Cube</li>
+        <li>Haraguchi Sasuke ft. Kasane Teto - Medicine</li>
+        <li>Seek & Destroy - Metallica</li>
+        <li>Tender Lover - Babyface</li>
+        <li>Old Fashioned Lover Boy - Queen</li>
+        <li>Castaway - The Vanished People</li>
+
+      </ul>
+
+      <p><strong>Passions:</strong> Writing poems, stories, and novels to touch the heart of someone I may never meet.</p>
+      <p><strong>Hobbies:</strong> Reading (Among my favorite books are those by William Shakespeare like Romeo and Juliet, Hamlet, The Merchant of Venice, or others like The Count of Monte Cristo, The Little Prince, Martin Fierro), text roleplaying, watching anime/series/movies with emotional narratives, playing video games (Minecraft, Borderlands, Dark Souls, TBOI, Roblox, roguelikes, shooters, survival…), and talking a lot.</p>
+      <p><strong>Sports (sometimes):</strong> Running, basketball, volleyball, e-sports, soccer.</p>
+      <p><strong>Things I love:</strong> Ancient weapons, technology, chocolate, cards, role-playing games like D&amp;D, the color purple, grapefruit juice, salty food, peanuts.</p>
+      <p><strong>Favorite animals:</strong> Sheep, goats, pigeons, turtles, frogs, dogs, cats, rabbits.</p>
+      <p><strong>Attraction:</strong> I am attracted to effeminate boys, ladies, and people with a broken tenderness or a dangerous smile.</p>
+
+      <hr />
+
+      <h2>Dreams</h2>
+      <p>I want to be a <strong>literature teacher</strong> and use words like magic. For what I write to transform, inspire, or console. I want to teach that reading is living another life without losing your own.</p>
+      <p>My goal is to <strong>live somewhere with snow</strong>, surrounded by books and shared emotions, with someone who wants to accompany me as a partner or life accomplice.</p>
+
+      <hr />
+
+      <h2>Contact</h2>
+      <ul>
+        <li><strong>Whatsapp:</strong> 3794613650</li>
+        <li><strong>Discord:</strong> @srto_rainwood</li>
+        <li><strong>Twitter/X:</strong> <a href="https://x.com/LivanoRainwood" target="_blank" rel="noopener noreferrer">@SrtoRainwood</a></li>
+        <li><strong>Email:</strong> <a href="mailto:NightBHGS10@gmail.com">NightBHGS10@gmail.com</a></li>
+        <li><strong>Paypal:</strong> <a href="https://www.paypal.me/SrtoRainwood" target="_blank" rel="noopener noreferrer">Buy me a coffee, music or a poem</a></li>
+      </ul>
+
+      <hr />
+
+      <h2>Extras</h2>
+      <ul>
+        <li>Passionate roleplayer, avid writer, lover of the tragic, the funny, and the literary.</li>
+        <li>I'm attracted to the broken, the strange, the real.</li>
+        <li>Emotionally open and available for anyone who needs a kind word or an honest chat.</li>
+        <li>I have no problem talking to anyone, even if you just come to tell me your day was weird.</li>
+      </ul>
+<!-- Añade este bloque justo antes del cierre de </body> -->
+
+<footer>
+  <div id="broken-archive" class="archive-container" aria-label="Rewind Paradise: Projects">
+    <button id="archive-toggle" aria-expanded="false" aria-controls="archive-content" aria-haspopup="true">
+      🔮 Rewind Paradise: Projects ▼
+    </button>
+    <nav id="archive-content" class="archive-content" hidden>
+      <ul>
+            <img src="Rewind Paradise.gif" width="640" height="240" alt="Descripción">
+<li><a href="#" tabindex="0">Own Philosophy: Empiricism</a></li>
+        <li><a href="#" tabindex="0">Poems</a></li>
+        <li><a href="#" tabindex="0">Musical Compositions</a></li>
+        <li><a href="#" tabindex="0">Characters and Stories</a></li>
+        <li><a href="#" tabindex="0">Drawings, abstract art, and visual art (Images)</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  const toggleBtn = document.getElementById('archive-toggle');
+  const content = document.getElementById('archive-content');
+
+  toggleBtn.addEventListener('click', () => {
+    const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+    toggleBtn.setAttribute('aria-expanded', !isExpanded);
+    if (content.hasAttribute('hidden')) {
+      content.removeAttribute('hidden');
+      toggleBtn.textContent = '🔮 Broken Mirror Archive: Projects ▲';
+    } else {
+      content.setAttribute('hidden', '');
+      toggleBtn.textContent = '🔮 Broken Mirror Archive: Projects ▼';
+    }
+  });
+</script>
+
+    </section>
+  </div>
+</div>
+
+
+</body>
+</html>
